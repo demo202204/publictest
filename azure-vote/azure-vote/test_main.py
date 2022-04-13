@@ -54,6 +54,6 @@ def test_reset(client):
     assert result.status_code == 200
     assert 'Cats - 0 | Dogs - 0' in result.get_data(as_text=True)
 
-def test_Fail(client):
-    assert False
+# def test_Fail(client):
+#     assert False
 
