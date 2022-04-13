@@ -35,7 +35,7 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: "SampleAcr202203"
+  AZURE_CONTAINER_REGISTRY: "sampleacr202203"
   CONTAINER_NAME: "azure-vote-front"
   RESOURCE_GROUP: "SampleRg202203"
   CLUSTER_NAME: "SampleRg202203"
