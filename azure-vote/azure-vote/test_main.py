@@ -54,9 +54,6 @@ def test_reset(client):
     assert result.status_code == 200
     assert 'Cats - 0 | Dogs - 0' in result.get_data(as_text=True)
 
-def test_redisConnectoin(client):
-    with patch.dict("os.environ", {"REDIS": "errorhost"}):
-        test_client = client[0]
-        result = vote(test_client, "reset")
-        print(result)
-    assert 'Cats - 0 | Dogs - a' in result.get_data(as_text=True)
+# def test_Fail(client):
+#     assert False
+
