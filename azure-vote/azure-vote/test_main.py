@@ -24,39 +24,39 @@ def test_get(client):
     assert '<button name="vote" value="Cats" onclick="send()" class="button button1">Cats</button>' in result.get_data(as_text=True)
     assert '<button name="vote" value="Dogs" onclick="send()" class="button button2">Dogs</button>' in result.get_data(as_text=True)
 
-def test_postError(client):
-    test_client = client[0]
-    result = test_client.post('/')
-    assert result.status_code == 400
+# def test_postError(client):
+#     test_client = client[0]
+#     result = test_client.post('/')
+#     assert result.status_code == 400
 
-def test_initReset(client):
-    test_client = client[0]
-    result = vote(test_client, "reset")
-    assert result.status_code == 200
-    assert 'Cats - 0 | Dogs - 0' in result.get_data(as_text=True)
+# def test_initReset(client):
+#     test_client = client[0]
+#     result = vote(test_client, "reset")
+#     assert result.status_code == 200
+#     assert 'Cats - 0 | Dogs - 0' in result.get_data(as_text=True)
 
-def test_voteCats(client):
-    test_client = client[0]
-    result = vote(test_client, "Cats")
-    assert result.status_code == 200
-    assert 'Cats - 1 | Dogs - 0' in result.get_data(as_text=True)
+# def test_voteCats(client):
+#     test_client = client[0]
+#     result = vote(test_client, "Cats")
+#     assert result.status_code == 200
+#     assert 'Cats - 1 | Dogs - 0' in result.get_data(as_text=True)
 
-def test_voteDogs(client):
-    test_client = client[0]
-    result = vote(test_client, "Dogs")
-    result = vote(test_client, "Dogs")
-    assert result.status_code == 200
-    assert 'Cats - 1 | Dogs - 2' in result.get_data(as_text=True)
+# def test_voteDogs(client):
+#     test_client = client[0]
+#     result = vote(test_client, "Dogs")
+#     result = vote(test_client, "Dogs")
+#     assert result.status_code == 200
+#     assert 'Cats - 1 | Dogs - 2' in result.get_data(as_text=True)
 
-def test_reset(client):
-    test_client = client[0]
-    result = vote(test_client, "reset")
-    assert result.status_code == 200
-    assert 'Cats - 0 | Dogs - 0' in result.get_data(as_text=True)
+# def test_reset(client):
+#     test_client = client[0]
+#     result = vote(test_client, "reset")
+#     assert result.status_code == 200
+#     assert 'Cats - 0 | Dogs - 0' in result.get_data(as_text=True)
 
-def test_redisConnectoin(client):
-    with patch.dict("os.environ", {"REDIS": "errorhost"}):
-        test_client = client[0]
-        result = vote(test_client, "reset")
-        print(result)
-    assert 'Cats - 0 | Dogs - a' in result.get_data(as_text=True)
+# def test_redisConnectoin(client):
+#     with patch.dict("os.environ", {"REDIS": "errorhost"}):
+#         test_client = client[0]
+#         result = vote(test_client, "reset")
+#         print(result)
+#     assert 'Cats - 0 | Dogs - a' in result.get_data(as_text=True)
