@@ -38,7 +38,7 @@ env:
   AZURE_CONTAINER_REGISTRY: "sampleacr202203"
   CONTAINER_NAME: "azure-vote-front"
   RESOURCE_GROUP: "SampleRg202203"
-  CLUSTER_NAME: "SampleRg202203"
+  CLUSTER_NAME: "SampleAks202203"
   IMAGE_PULL_SECRET_NAME: "github-ci-secret"
   DEPLOYMENT_MANIFEST_PATH: 'azure-vote-all-in-one-redis.yaml'
 
