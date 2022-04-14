@@ -21,13 +21,8 @@ def test_get(client):
     result = test_client.get('/')
     assert result.status_code == 200
     assert 'Azure Voting App' in result.get_data(as_text=True)
-    assert 'ねこ' in result.get_data(as_text=True)
-    assert 'いぬ' in result.get_data(as_text=True)
-
-def test_postError(client):
-    test_client = client[0]
-    result = test_client.post('/')
-    assert result.status_code == 400
+    assert 'Cats' in result.get_data(as_text=True)
+    assert 'Dogs' in result.get_data(as_text=True)
 
 # def test_Fail(client):
 #     assert False
