@@ -25,11 +25,11 @@ def test_get(client):
     assert 'いぬ' in result.get_data(as_text=True)
 
 
-def test_postError(client):
-    with pytest.raises(Exception) as e:
-        test_client = client
-        _ = test_client.post('/')
-    assert str(e.value) == "400 Bad Request: The browser (or proxy) sent a request that this server could not understand.\nKeyError: 'vote'"        
+# def test_postError(client):
+#     with pytest.raises(Exception) as e:
+#         test_client = client
+#         _ = test_client.post('/')
+#     assert str(e.value) == "400 Bad Request: The browser (or proxy) sent a request that this server could not understand.\nKeyError: 'vote'"        
 
 # def test_Fail(client):
 #     assert False
