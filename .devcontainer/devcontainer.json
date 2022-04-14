@@ -1,26 +1,36 @@
 {
-    // IntelliSense を使用して利用可能な属性を学べます。
-    // 既存の属性の説明をホバーして表示します。
-    // 詳細情報は次を確認してください: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: Flask",
-            "type": "python",
-            "request": "launch",
-            "module": "flask",
-            "env": {
-                "FLASK_APP": "main.py",
-                "FLASK_ENV": "development",
-                "cwd": "${workspaceFolder}",
-                "PYTHONPATH": "${cwd}/azure-vote/azure-vote"
-            },
-            "args": [
-                "run",
-                "--no-debugger"
-            ],
-            "jinja": true,
-            "justMyCode": true
-        }
-    ]
+    // 表示名
+    "name": "flask-dev-container", 
+    "dockerComposeFile": [
+        // Docker Composeのファイルパス
+        "../docker-compose.yml", 
+        // 追加設定のDocker Composeのファイルパス
+        "../docker-compose-local.yml" 
+    ],
+    // 接続するDocker Composeのサービス名
+    "service": "azure-vote-front", 
+    // Workspaceのフォルダを指定
+    "workspaceFolder": "/app", 
+    // コンテナ内でインストールするVS Codeの拡張機能ID
+    "extensions": [ 
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+    ],
+    // コンテナ内に追加するVS Codeの設定
+    "settings": { 
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.linting.enabled": true,
+        "python.linting.pylintEnabled": false,
+        "python.linting.flake8Enabled":true,
+        "python.linting.lintOnSave":true,
+        "python.formatting.provider": "autopep8",
+        "python.linting.flake8Args": [
+            "--max-line-length",
+            "150"
+        ]
+    },
+    // localインストールされたpipのPATHを追加
+    "remoteEnv": { 
+        "PATH": "${containerEnv:PATH}:/root/.local/bin/"
+    }
 }
