@@ -21,15 +21,15 @@ def test_get(client):
     result = test_client.get('/')
     assert result.status_code == 200
     assert 'Azure Voting App' in result.get_data(as_text=True)
-    assert 'Cats' in result.get_data(as_text=True)
-    assert 'Dogs' in result.get_data(as_text=True)
+    assert 'ねこ' in result.get_data(as_text=True)
+    assert 'いぬ' in result.get_data(as_text=True)
 
 
-def test_postError(client):
-    with pytest.raises(Exception) as e:
-        test_client = client
-        _ = test_client.post('/')
-    assert str(e.value) == "400 Bad Request: The browser (or proxy) sent a request that this server could not understand.\nKeyError: 'vote'"        
+# def test_postError(client):
+#     with pytest.raises(Exception) as e:
+#         test_client = client
+#         _ = test_client.post('/')
+#     assert str(e.value) == "400 Bad Request: The browser (or proxy) sent a request that this server could not understand.\nKeyError: 'vote'"        
 
 # def test_Fail(client):
 #     assert False
