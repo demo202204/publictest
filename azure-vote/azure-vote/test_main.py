@@ -1,19 +1,19 @@
 """Test Code"""
-import pytest, os
+import pytest
 
 from main import app
 
-from unittest.mock import patch
 
-@pytest.fixture(params=[("req1","res1")])
+@pytest.fixture(params=[("req1", "res1")])
 def client(request):
     app.config['TESTING'] = True
     test_client = app.test_client()
     yield test_client, request.param
     test_client.delete()
 
+
 def vote(client, vote):
-    return client.post('/',data=dict(vote=vote), follow_redirects=True)
+    return client.post('/', data=dict(vote=vote), follow_redirects=True)
 
 
 def test_get(client):
@@ -24,6 +24,6 @@ def test_get(client):
     assert 'Cats' in result.get_data(as_text=True)
     assert 'Dogs' in result.get_data(as_text=True)
 
+
 # def test_Fail(client):
 #     assert False
-
